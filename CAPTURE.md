@@ -38,6 +38,13 @@ taken straight to the jig's GUITAR input with clips:
 **In the guitar (`mode: in_guitar`).** When the pickup can't come out: the X-ray (`cod rec xray`) measures at the
 output jack and separates the pots and cable from the pickup. Strings off, or muted with foam (write `strings`).
 Write the pot values and tone cap if you measured them out of circuit (they become locked values in the fit).
+Guitars with a volume pot only: `cod rec xray NAME --no-tone` (four volume steps).
+
+**The volume pot at 10 is not a fixed point.** A real pot never reaches 0 ohm at the end of its travel: on a 500k CTS
+we measured from 0 to 1.2 kohm in series depending on how the knob was turned, which looks like a coil 1-8 % more
+resistive. In the guitar, always give the fit the DC resistance from a meter: at the output jack with the volume pushed
+fully up, `--rdc-jack OHM` (the fit removes the volume pot), or at the pickup leads, `--rdc OHM`. The X-ray then
+estimates the pot's end resistance by itself.
 
 ## 4. Capture three times
 
