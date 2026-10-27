@@ -1,5 +1,5 @@
 """pickup-db: validate every capture in pickups/ and guitars/ against schema/, then write index.json = one entry per
-brand + model + position + type + wiring, with the community average of each measured parameter.
+brand + model + position + type + wiring + cover, with the community average of each measured parameter.
 
 How the average is made (CAPTURE.md explains why):
 - Rdc is normalised to 20 C when the capture says the room temperature (copper: +0.393 %/C).
@@ -77,12 +77,13 @@ def index(pickups, guitars):
         if not (p["brand"] and p["model"]):
             continue  # anonymous captures stay out of the catalog
         wiring = p["context"].get("wiring") or ("series" if "humbucker" in p["type"] else "single")
-        groups.setdefault((norm(p["brand"]), norm(p["model"]), p["position"], p["type"], wiring), []).append(p)
+        cover = bool(p["context"].get("cover"))  # a metal cover changes eddy loss and Cp: another entry (measured: Re -33 %, Cp +56 pF)
+        groups.setdefault((norm(p["brand"]), norm(p["model"]), p["position"], p["type"], wiring, cover), []).append(p)
     entries = []
-    for (_b, _m, pos, typ, wiring), ps in sorted(groups.items()):
+    for (_b, _m, pos, typ, wiring, cover), ps in sorted(groups.items()):
         good = [p for p in ps if trusted(p)]
-        e = {"name": f"{ps[0]['brand']} {ps[0]['model']} ({pos})", "brand": ps[0]["brand"], "model": ps[0]["model"], "position": pos,
-             "type": typ, "wiring": wiring, "count": len(ps), "used": len(good), "ids": [p["id"] for p in ps],
+        e = {"name": f"{ps[0]['brand']} {ps[0]['model']} ({pos}{', cover' if cover else ''})", "brand": ps[0]["brand"], "model": ps[0]["model"], "position": pos,
+             "type": typ, "wiring": wiring, "cover": cover, "count": len(ps), "used": len(good), "ids": [p["id"] for p in ps],
              "protocol_captures": sum(1 for p in ps if p["context"].get("protocol")), "params": {}, "profile": {}, "outliers": 0}
         for k in PARAMS:
             measured = [value(p, k) for p in good if k not in p["quality"]["estimated"]]
@@ -138,6 +139,9 @@ def selftest():
     assert abs(e["params"]["rdc_ohm"]["mean"] - 8150) < 1e-6 and e["params"]["re_ohm"]["n"] == 4, e["params"]
     split = prof(4100, model="Vintage 59", wiring="split")
     assert len(index([a, split], [])["pickups"]) == 2  # a split humbucker is another entry
+    covered = prof(8000, cover=True)
+    two = index([a, covered], [])["pickups"]
+    assert len(two) == 2 and [e["cover"] for e in two] == [False, True] and two[1]["name"].endswith("cover)")
     only_est = index([prof(7000, "manual", ["re_ohm", "cp_F"], model="X")], [])["pickups"][0]
     assert only_est["estimated"] == ["re_ohm", "cp_F"] and only_est["profile"]["cp_F"] == 1.1e-10 and "cp_F" not in only_est["params"]
     print("SELFTEST OK")

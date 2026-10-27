@@ -10,7 +10,7 @@ If this database saves you time, you can support it on [Buy Me a Coffee](https:/
 ## What is in it
 - `pickups/<brand>/<model>/<id>.json`: one capture each (schema `schema/pickup.schema.json`).
 - `guitars/`: whole guitars measured at the output jack (pickups + pots + tone cap + cable).
-- `index.json`: rebuilt automatically on every change. One entry per brand + model + position + type + wiring, with
+- `index.json`: rebuilt automatically on every change. One entry per brand + model + position + type + wiring + cover, with
   the average, spread and count of each parameter, and `profile`, the values a simulator uses.
 
 RackNAM (NAM amp rack) and Coil of Duty (pickup X-ray jig) download `index.json` when they start, so every
