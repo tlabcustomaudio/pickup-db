@@ -92,6 +92,94 @@
    "outliers": 0,
    "f0_std_load_hz": 2369.5871500227895,
    "q_std_load": 1.0655270134049633
+  },
+  {
+   "name": "Tonerider J1N-4 (bridge)",
+   "brand": "Tonerider",
+   "model": "J1N-4",
+   "position": "bridge",
+   "type": "bass_single",
+   "wiring": "single",
+   "cover": false,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "eaafcac2-ac1a-4e25-849f-ebd7ade2ab51"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "L_H": {
+     "mean": 3.786521485100387,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 874148.4019412812,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 1.910284287285851e-10,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 8353.9585030571,
+    "L_H": 3.786521485100387,
+    "re_ohm": 874148.4019412812,
+    "cp_F": 1.910284287285851e-10
+   },
+   "outliers": 0,
+   "estimated": [
+    "rdc_ohm"
+   ],
+   "f0_std_load_hz": 3231.7407560697916,
+   "q_std_load": 1.776313244229535
+  },
+  {
+   "name": "Tonerider J1N-4 (neck)",
+   "brand": "Tonerider",
+   "model": "J1N-4",
+   "position": "neck",
+   "type": "bass_single",
+   "wiring": "single",
+   "cover": false,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "a54b8d8a-57db-47b4-ac86-cf8a6d180b8c"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "L_H": {
+     "mean": 3.396323460319358,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 826615.799643417,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 1.84859549223619e-10,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 7835.04965016448,
+    "L_H": 3.396323460319358,
+    "re_ohm": 826615.799643417,
+    "cp_F": 1.84859549223619e-10
+   },
+   "outliers": 0,
+   "estimated": [
+    "rdc_ohm"
+   ],
+   "f0_std_load_hz": 3424.2191439809726,
+   "q_std_load": 1.836220478966197
   }
  ],
  "guitars": []
