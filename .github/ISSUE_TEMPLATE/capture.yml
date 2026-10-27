@@ -1,0 +1,31 @@
+name: Pickup capture
+description: Share a pickup measured with Coil of Duty or RackNAM (CAPTURE.md)
+title: "Capture: "
+labels: ["capture"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the profile exactly as Coil of Duty / RackNAM wrote it (they fill this form for you).
+        A bot checks it and opens a pull request; a maintainer merges it and the index updates by itself.
+  - type: textarea
+    id: profile
+    attributes:
+      label: Profile JSON
+      description: schema coilofduty.pickup/1
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: protocol
+    attributes:
+      label: Protocol
+      options:
+        - label: I followed CAPTURE.md (calibrated this session, three scans, no steel near the pickup)
+        - label: I agree to publish this capture under CC BY 4.0
+          required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: anything unusual (rewound, vintage, cover removed...)

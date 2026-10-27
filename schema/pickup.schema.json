@@ -1,0 +1,293 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/tlabcustomaudio/pickup-db/schema/pickup.schema.json",
+ "title": "Coil of Duty pickup profile",
+ "description": "One measured pickup. params = the bare pickup (no pots, no cable). derived = resonance with no load and with the standard load. context = how it was captured (CAPTURE.md): the index uses it to normalise and weigh the data.",
+ "type": "object",
+ "required": [
+  "schema",
+  "id",
+  "brand",
+  "model",
+  "position",
+  "type",
+  "params",
+  "quality",
+  "derived",
+  "context"
+ ],
+ "properties": {
+  "schema": {
+   "const": "coilofduty.pickup/1"
+  },
+  "id": {
+   "type": "string",
+   "format": "uuid"
+  },
+  "brand": {
+   "type": "string",
+   "description": "plain text, no logos"
+  },
+  "model": {
+   "type": "string"
+  },
+  "position": {
+   "enum": [
+    "neck",
+    "middle",
+    "bridge",
+    "other"
+   ]
+  },
+  "type": {
+   "enum": [
+    "single",
+    "humbucker",
+    "p90",
+    "mini_humbucker",
+    "active",
+    "bass_single",
+    "bass_humbucker",
+    "other"
+   ]
+  },
+  "params": {
+   "type": "object",
+   "required": [
+    "rdc_ohm",
+    "L_H",
+    "re_ohm",
+    "cp_F"
+   ],
+   "properties": {
+    "rdc_ohm": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "maximum": 100000.0
+    },
+    "L_H": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "maximum": 50
+    },
+    "re_ohm": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "description": "eddy-current loss, resistor across L"
+    },
+    "cp_F": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "maximum": 2e-09,
+     "description": "coil capacitance"
+    }
+   },
+   "additionalProperties": false
+  },
+  "quality": {
+   "type": "object",
+   "required": [
+    "method",
+    "estimated"
+   ],
+   "properties": {
+    "method": {
+     "enum": [
+      "xray",
+      "scan+tester",
+      "scan",
+      "manual"
+     ],
+     "description": "xray = all params measured; scan = re estimated; manual = tester values"
+    },
+    "fit_rms_db": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "estimated": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "rdc_ohm",
+       "L_H",
+       "re_ohm",
+       "cp_F"
+      ]
+     },
+     "description": "params that are not measured: left out of community averages"
+    }
+   }
+  },
+  "derived": {
+   "type": "object",
+   "required": [
+    "f0_unloaded_hz",
+    "q_unloaded",
+    "f0_std_load_hz",
+    "q_std_load",
+    "std_load"
+   ],
+   "properties": {
+    "f0_unloaded_hz": {
+     "type": "number"
+    },
+    "q_unloaded": {
+     "type": "number"
+    },
+    "f0_std_load_hz": {
+     "type": "number"
+    },
+    "q_std_load": {
+     "type": "number"
+    },
+    "std_load": {
+     "type": "object",
+     "required": [
+      "r_ohm",
+      "c_F"
+     ]
+    }
+   }
+  },
+  "z": {
+   "type": "object",
+   "description": "raw impedance at the jack (optional, for refits)",
+   "required": [
+    "f_hz",
+    "re",
+    "im"
+   ],
+   "properties": {
+    "f_hz": {
+     "type": "array",
+     "items": {
+      "type": "number"
+     }
+    },
+    "re": {
+     "type": "array",
+     "items": {
+      "type": "number"
+     }
+    },
+    "im": {
+     "type": "array",
+     "items": {
+      "type": "number"
+     }
+    }
+   }
+  },
+  "context": {
+   "type": "object",
+   "required": [
+    "tool",
+    "date"
+   ],
+   "properties": {
+    "tool": {
+     "type": "string"
+    },
+    "date": {
+     "type": "string"
+    },
+    "author": {
+     "type": "string"
+    },
+    "guitar": {
+     "type": "string"
+    },
+    "rs_ohm": {
+     "type": "number"
+    },
+    "fs": {
+     "type": "number"
+    },
+    "protocol": {
+     "type": "string",
+     "description": "capture protocol followed, e.g. capture/1 (CAPTURE.md)"
+    },
+    "temp_c": {
+     "type": "number",
+     "minimum": -10,
+     "maximum": 50,
+     "description": "room temperature at the capture: Rdc is normalised to 20 C"
+    },
+    "mode": {
+     "enum": [
+      "bare",
+      "in_guitar"
+     ],
+     "description": "bare = pickup leads straight to the jig; in_guitar = at the guitar jack (X-ray)"
+    },
+    "strings": {
+     "enum": [
+      "off",
+      "muted",
+      "n/a"
+     ]
+    },
+    "cover": {
+     "type": "boolean"
+    },
+    "magnet": {
+     "type": "string",
+     "description": "A2, A4, A5, ceramic, rods..."
+    },
+    "wiring": {
+     "enum": [
+      "single",
+      "series",
+      "split",
+      "parallel"
+     ],
+     "description": "humbuckers: how the two coils were connected"
+    },
+    "interface": {
+     "type": "string",
+     "description": "audio interface model"
+    },
+    "serial": {
+     "type": "string",
+     "description": "unit serial / date code, to tell repeat captures of the same pickup"
+    },
+    "repeats": {
+     "type": "object",
+     "properties": {
+      "n": {
+       "type": "integer",
+       "minimum": 1
+      },
+      "f0_sd_pct": {
+       "type": "number"
+      },
+      "rdc_sd_pct": {
+       "type": "number"
+      }
+     },
+     "description": "spread of the repeated scans the profile is the median of"
+    },
+    "lcr": {
+     "type": "object",
+     "properties": {
+      "rdc_ohm": {
+       "type": "number"
+      },
+      "L_H": {
+       "type": "number"
+      },
+      "freq_hz": {
+       "type": "number"
+      },
+      "meter": {
+       "type": "string"
+      }
+     },
+     "description": "cross-check with an LCR meter / multimeter"
+    }
+   }
+  }
+ }
+}

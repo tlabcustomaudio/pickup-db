@@ -1,0 +1,30 @@
+# Pull requests: every capture must validate. main: rebuild index.json (what RackNAM and Coil of Duty download).
+name: index
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths: ["pickups/**", "guitars/**", "schema/**", "tools/**"]
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - run: python3 tools/build_index.py --selftest
+      - name: check (pull request)
+        if: github.event_name == 'pull_request'
+        run: python3 tools/build_index.py --check
+      - name: rebuild and commit (main)
+        if: github.event_name == 'push'
+        run: |
+          python3 tools/build_index.py
+          git config user.name "pickup-db bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git diff --cached --quiet || { git commit -m "index.json rebuilt"; git push; }

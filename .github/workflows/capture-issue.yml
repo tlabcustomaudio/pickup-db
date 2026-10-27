@@ -1,0 +1,51 @@
+# A "Pickup capture" issue becomes a pull request with the profile file (validated), or gets a comment saying why not.
+name: capture issue -> pull request
+on:
+  issues:
+    types: [opened, edited]
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  capture:
+    if: contains(github.event.issue.labels.*.name, 'capture')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - name: profile -> file
+        id: file
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '%s' "$BODY" > /tmp/body.md
+          if out=$(python3 tools/issue_to_file.py /tmp/body.md 2>&1); then
+            echo "path=$out" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s' "$out" > /tmp/err.txt; echo "failed=1" >> "$GITHUB_OUTPUT"
+          fi
+      - name: pull request
+        if: steps.file.outputs.failed != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          N: ${{ github.event.issue.number }}
+          FILE: ${{ steps.file.outputs.path }}
+        run: |
+          git config user.name "pickup-db bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "capture-$N"
+          git add "$FILE"
+          git commit -m "Capture from #$N"
+          git push -f origin "capture-$N"
+          gh pr create --head "capture-$N" --title "Capture from #$N" --body "Closes #$N. Added by the bot from the issue form: $FILE" \
+            || gh pr comment "capture-$N" --body "Profile updated from the issue."
+      - name: tell the author what is wrong
+        if: steps.file.outputs.failed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          N: ${{ github.event.issue.number }}
+        run: gh issue comment "$N" --body-file /tmp/err.txt

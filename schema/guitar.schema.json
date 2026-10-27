@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tlabcustomaudio/pickup-db/schema/guitar.schema.json",
+  "title": "Coil of Duty guitar profile (X-ray)",
+  "description": "A whole guitar circuit: pickups in their slots, selector positions, controls, cable. Rebuilds the real setup for simulation.",
+  "type": "object",
+  "required": ["schema", "id", "name", "pickups", "selector", "controls", "cable_F", "quality", "context"],
+  "properties": {
+    "schema": {"const": "coilofduty.guitar/1"},
+    "id": {"type": "string", "format": "uuid"},
+    "name": {"type": "string"},
+    "pickups": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["slot", "pickup"],
+                "properties": {"slot": {"type": "string"}, "pickup": {"$ref": "pickup.schema.json"}}}},
+    "selector": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["name", "slots", "wiring"],
+                 "properties": {"name": {"type": "string"}, "slots": {"type": "array", "items": {"type": "string"}},
+                                "wiring": {"enum": ["single", "parallel", "series", "split", "out_of_phase"]}}}},
+    "controls": {
+      "type": "object", "required": ["volume", "tone", "wiring"],
+      "properties": {
+        "volume": {"type": "object", "required": ["ohm", "taper"], "properties": {"ohm": {"type": "number"}, "taper": {"type": "string"},
+                   "fraction_at_knob": {"type": "object"}, "treble_bleed": {"type": "object"}}},
+        "tone": {"type": "object", "required": ["ohm", "taper", "cap_F"], "properties": {"ohm": {"type": "number"}, "taper": {"type": "string"},
+                 "cap_F": {"type": "number"}, "fraction_at_knob": {"type": "object"}}},
+        "wiring": {"enum": ["modern", "50s"]}
+      }
+    },
+    "cable_F": {"type": "number"},
+    "quality": {"type": "object", "required": ["method"]},
+    "context": {"type": "object", "required": ["tool", "date"]}
+  }
+}
