@@ -1,0 +1,44 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "f2e4b77a-e085-4101-a1ea-ce7036514a11",
+ "brand": "Seymour Duncan",
+ "model": "SH-5 Custom",
+ "position": "bridge",
+ "type": "humbucker",
+ "params": {
+  "rdc_ohm": 14220.81753280929,
+  "L_H": 7.387544743572468,
+  "re_ohm": 493051.0667339582,
+  "cp_F": 9.124586741939844e-11
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 0.11378021208697331,
+  "estimated": []
+ },
+ "derived": {
+  "f0_unloaded_hz": 6040.975708523575,
+  "q_unloaded": 1.8442043770734136,
+  "f0_std_load_hz": 2521.721823783018,
+  "q_std_load": 1.133595999100273,
+  "std_load": {
+   "r_ohm": 200000.0,
+   "c_F": 4.7e-10,
+   "note": "250k of pots || 1M input, 470 pF cable: the same for every pickup"
+  }
+ },
+ "context": {
+  "tool": "cod.py p0",
+  "rs_ohm": 101900.0,
+  "fs": 48000,
+  "date": "2026-10-27",
+  "author": "",
+  "guitar": "Harley Benton Telecaster, Bourns 500k volume",
+  "temp_c": 21.0,
+  "wiring": "series",
+  "mode": "in_guitar",
+  "strings": "muted",
+  "interface": "Focusrite Saffire 6 USB 2.0",
+  "cover": false
+ }
+}
