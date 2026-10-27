@@ -1,15 +1,20 @@
-# Pull requests: every capture must validate. main: rebuild index.json (what RackNAM and Coil of Duty download).
+# Pull requests: every capture must validate (read-only). main: rebuild index.json (what RackNAM and Coil of Duty
+# download), one run at a time, rebased on the latest main so two merges in a row both land.
 name: index
 on:
   pull_request:
   push:
     branches: [main]
     paths: ["pickups/**", "guitars/**", "schema/**", "tools/**"]
-permissions:
-  contents: write
+concurrency:
+  group: index-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  index:
+  check:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,14 +22,24 @@ jobs:
           python-version: "3.12"
       - run: pip install jsonschema
       - run: python3 tools/build_index.py --selftest
-      - name: check (pull request)
-        if: github.event_name == 'pull_request'
-        run: python3 tools/build_index.py --check
-      - name: rebuild and commit (main)
-        if: github.event_name == 'push'
+      - run: python3 tools/build_index.py --check
+  rebuild:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - run: python3 tools/build_index.py --selftest
+      - name: rebuild and commit
         run: |
-          python3 tools/build_index.py
           git config user.name "pickup-db bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull -q --rebase origin main
+          python3 tools/build_index.py
           git add index.json
-          git diff --cached --quiet || { git commit -m "index.json rebuilt"; git push; }
+          git diff --cached --quiet || { git commit -m "index.json rebuilt"; git pull -q --rebase origin main; git push; }
