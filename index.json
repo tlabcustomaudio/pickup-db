@@ -1,5 +1,98 @@
 {
  "schema": "pickupdb.index/1",
- "pickups": [],
+ "pickups": [
+  {
+   "name": "Seymour Duncan SH-5 Custom (bridge)",
+   "brand": "Seymour Duncan",
+   "model": "SH-5 Custom",
+   "position": "bridge",
+   "type": "humbucker",
+   "wiring": "series",
+   "cover": false,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "f2e4b77a-e085-4101-a1ea-ce7036514a11"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "rdc_ohm": {
+     "mean": 14165.148499207404,
+     "sd": null,
+     "n": 1
+    },
+    "L_H": {
+     "mean": 7.387544743572468,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 493051.0667339582,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 9.124586741939844e-11,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 14165.148499207404,
+    "L_H": 7.387544743572468,
+    "re_ohm": 493051.0667339582,
+    "cp_F": 9.124586741939844e-11
+   },
+   "outliers": 0,
+   "f0_std_load_hz": 2521.721823783018,
+   "q_std_load": 1.133595999100273
+  },
+  {
+   "name": "Seymour Duncan SH-5 Custom (bridge, cover)",
+   "brand": "Seymour Duncan",
+   "model": "SH-5 Custom",
+   "position": "bridge",
+   "type": "humbucker",
+   "wiring": "series",
+   "cover": true,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "32226e6a-db3a-4715-8631-8a3752b10105"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "rdc_ohm": {
+     "mean": 13828.172092797244,
+     "sd": null,
+     "n": 1
+    },
+    "L_H": {
+     "mean": 7.507242666891223,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 330790.53402791236,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 1.472874793382503e-10,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 13828.172092797244,
+    "L_H": 7.507242666891223,
+    "re_ohm": 330790.53402791236,
+    "cp_F": 1.472874793382503e-10
+   },
+   "outliers": 0,
+   "f0_std_load_hz": 2369.5871500227895,
+   "q_std_load": 1.0655270134049633
+  }
+ ],
  "guitars": []
 }
