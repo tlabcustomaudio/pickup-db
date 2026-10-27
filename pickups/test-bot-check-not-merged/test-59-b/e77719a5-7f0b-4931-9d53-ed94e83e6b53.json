@@ -1,0 +1,39 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "e77719a5-7f0b-4931-9d53-ed94e83e6b53",
+ "brand": "TEST (bot check, not merged)",
+ "model": "Test 59/B",
+ "position": "bridge",
+ "type": "humbucker",
+ "params": {
+  "rdc_ohm": 8000,
+  "L_H": 4.4,
+  "re_ohm": 250000.0,
+  "cp_F": 1.1e-10
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 0.01,
+  "estimated": []
+ },
+ "derived": {
+  "f0_unloaded_hz": 7000,
+  "q_unloaded": 3,
+  "f0_std_load_hz": 3000,
+  "q_std_load": 1.9,
+  "std_load": {
+   "r_ohm": 200000.0,
+   "c_F": 4.7e-10
+  }
+ },
+ "context": {
+  "tool": "cod.py",
+  "date": "2026-10-27",
+  "protocol": "capture/1",
+  "temp_c": 21.5,
+  "repeats": {
+   "n": 3,
+   "f0_sd_pct": 0.4
+  }
+ }
+}
