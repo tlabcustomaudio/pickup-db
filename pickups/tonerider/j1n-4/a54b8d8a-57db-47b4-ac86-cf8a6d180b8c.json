@@ -1,0 +1,47 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "a54b8d8a-57db-47b4-ac86-cf8a6d180b8c",
+ "brand": "Tonerider",
+ "model": "J1N-4",
+ "position": "neck",
+ "type": "bass_single",
+ "params": {
+  "rdc_ohm": 7865.841395289626,
+  "L_H": 3.396323460319358,
+  "re_ohm": 826615.799643417,
+  "cp_F": 1.84859549223619e-10
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 0.330056630317766,
+  "estimated": [
+   "rdc_ohm"
+  ]
+ },
+ "derived": {
+  "f0_unloaded_hz": 6321.761752106888,
+  "q_unloaded": 4.584906176138412,
+  "f0_std_load_hz": 3424.2191439809726,
+  "q_std_load": 1.836220478966197,
+  "std_load": {
+   "r_ohm": 200000.0,
+   "c_F": 4.7e-10
+  }
+ },
+ "context": {
+  "tool": "RackNAM Coil of Duty 0.1.0",
+  "date": "2026-10-27",
+  "rs_ohm": 101900.0,
+  "fs": 48000.0,
+  "mode": "in_guitar",
+  "strings": "muted",
+  "cover": false,
+  "wiring": "single",
+  "magnet": "Alnico 5",
+  "temp_c": 21.0,
+  "lcr": {
+   "rdc_ohm": 7110.0,
+   "meter": "at the pickup leads"
+  }
+ }
+}
