@@ -94,9 +94,9 @@
    "q_std_load": 1.0655270134049633
   },
   {
-   "name": "Tonerider J1N-4 (bridge)",
+   "name": "Tonerider J1B-4 (bridge)",
    "brand": "Tonerider",
-   "model": "J1N-4",
+   "model": "J1B-4",
    "position": "bridge",
    "type": "bass_single",
    "wiring": "single",

@@ -39,6 +39,7 @@
   "mode": "in_guitar",
   "strings": "muted",
   "interface": "Focusrite Saffire 6 USB 2.0",
-  "cover": false
+  "cover": false,
+  "magnet": "ceramic"
  }
 }
