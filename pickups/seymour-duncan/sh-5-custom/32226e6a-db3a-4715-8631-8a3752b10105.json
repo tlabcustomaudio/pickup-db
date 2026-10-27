@@ -1,0 +1,44 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "32226e6a-db3a-4715-8631-8a3752b10105",
+ "brand": "Seymour Duncan",
+ "model": "SH-5 Custom",
+ "position": "bridge",
+ "type": "humbucker",
+ "params": {
+  "rdc_ohm": 13882.516809121937,
+  "L_H": 7.507242666891223,
+  "re_ohm": 330790.53402791236,
+  "cp_F": 1.472874793382503e-10
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 0.0951267189305027,
+  "estimated": []
+ },
+ "derived": {
+  "f0_unloaded_hz": 4689.253639786043,
+  "q_unloaded": 1.626157924999911,
+  "f0_std_load_hz": 2369.5871500227895,
+  "q_std_load": 1.0655270134049633,
+  "std_load": {
+   "r_ohm": 200000.0,
+   "c_F": 4.7e-10,
+   "note": "250k of pots || 1M input, 470 pF cable: the same for every pickup"
+  }
+ },
+ "context": {
+  "tool": "cod.py p0",
+  "rs_ohm": 101900.0,
+  "fs": 48000,
+  "date": "2026-10-27",
+  "author": "",
+  "guitar": "E-335 style, CTS 500k",
+  "temp_c": 21.0,
+  "wiring": "series",
+  "mode": "in_guitar",
+  "strings": "muted",
+  "interface": "Focusrite Saffire 6 USB 2.0",
+  "cover": true
+ }
+}
