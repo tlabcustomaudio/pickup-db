@@ -2,8 +2,10 @@
 
 1. Measure following [CAPTURE.md](CAPTURE.md).
 2. Share it:
-   - from Coil of Duty: `cod share NAME`, or from RackNAM: PICKUP > your profile > Share. Both open the
-     **Pickup capture** issue already filled in;
+   - from RackNAM's Coil of Duty window: nothing to do, every capture saved with a brand and model is sent by itself
+     as soon as the computer is online (the user accepts this once, before the first scan; see `relay/`);
+   - from `cod share NAME`, or RackNAM: PICKUP > a New pickup... profile > Share: both open the **Pickup capture** issue
+     already filled in;
    - by hand: New issue > Pickup capture, paste the profile JSON.
 3. The bot checks the profile against the schema and opens a pull request (or comments on the issue with what is wrong).
 4. A maintainer merges it; `index.json` is rebuilt by itself.
