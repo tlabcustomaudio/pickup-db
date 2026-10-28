@@ -1,0 +1,41 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "1f3f1cae-ff51-4aba-b640-08183d7c6dba",
+ "brand": "Seymour Duncan",
+ "model": "SPB-3",
+ "position": "bridge",
+ "type": "humbucker",
+ "params": {
+  "rdc_ohm": 11486.031140311283,
+  "L_H": 6.569577166683349,
+  "re_ohm": 284881.25655396574,
+  "cp_F": 3.56290980130338e-11
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 1.323163304201168,
+  "estimated": []
+ },
+ "derived": {
+  "f0_unloaded_hz": 10199.193412169392,
+  "q_unloaded": 1.098922761053042,
+  "f0_std_load_hz": 2784.0565421968327,
+  "q_std_load": 1.016315991941001,
+  "std_load": {
+   "r_ohm": 200000,
+   "c_F": 4.7e-10
+  }
+ },
+ "context": {
+  "tool": "RackNAM Coil of Duty 0.1.0",
+  "date": "2026-10-28",
+  "rs_ohm": 101900,
+  "fs": 48000,
+  "mode": "in_guitar",
+  "strings": "muted",
+  "cover": false,
+  "magnet": "Alnico 5",
+  "interface": "focusrite Saffire 6",
+  "temp_c": 11.04
+ }
+}
