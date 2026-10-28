@@ -1,0 +1,46 @@
+{
+ "schema": "coilofduty.pickup/1",
+ "id": "c6a341cf-aad4-4aa9-a6ff-afd21d1f333d",
+ "brand": "Roswell",
+ "model": "HAF",
+ "position": "neck",
+ "type": "humbucker",
+ "params": {
+  "rdc_ohm": 8510.32162254031,
+  "L_H": 4.161720986401519,
+  "re_ohm": 305456.7819943489,
+  "cp_F": 1.027257715656194e-10
+ },
+ "quality": {
+  "method": "xray",
+  "fit_rms_db": 0.237242685404679,
+  "estimated": []
+ },
+ "derived": {
+  "f0_unloaded_hz": 7592.35944118124,
+  "q_unloaded": 1.702118435051614,
+  "f0_std_load_hz": 3283.158750873593,
+  "q_std_load": 1.309097665331157,
+  "std_load": {
+   "r_ohm": 200000,
+   "c_F": 4.7e-10
+  }
+ },
+ "context": {
+  "tool": "RackNAM Coil of Duty 0.1.0",
+  "date": "2026-10-28",
+  "rs_ohm": 101900,
+  "fs": 48000,
+  "mode": "in_guitar",
+  "strings": "muted",
+  "cover": false,
+  "wiring": "series",
+  "magnet": "Alnico 5",
+  "interface": "focusrite Saffire 6",
+  "temp_c": 21,
+  "lcr": {
+   "rdc_ohm": 8150,
+   "meter": "at the jack, volume up"
+  }
+ }
+}
