@@ -140,6 +140,52 @@
    "q_std_load": 1.0655270134049633
   },
   {
+   "name": "Seymour Duncan SPB-3 (middle)",
+   "brand": "Seymour Duncan",
+   "model": "SPB-3",
+   "position": "middle",
+   "type": "bass_humbucker",
+   "wiring": "series",
+   "cover": false,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "1f3f1cae-ff51-4aba-b640-08183d7c6dba"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "rdc_ohm": {
+     "mean": 11879.521462052238,
+     "sd": null,
+     "n": 1
+    },
+    "L_H": {
+     "mean": 6.5630739176182145,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 298872.28828867764,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 3.9729257287371494e-11,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 11879.521462052238,
+    "L_H": 6.5630739176182145,
+    "re_ohm": 298872.28828867764,
+    "cp_F": 3.9729257287371494e-11
+   },
+   "outliers": 0,
+   "f0_std_load_hz": 2776.9765791816712,
+   "q_std_load": 1.0330136701718995
+  },
+  {
    "name": "Tonerider J1B-4 (bridge)",
    "brand": "Tonerider",
    "model": "J1B-4",
