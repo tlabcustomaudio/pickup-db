@@ -2,6 +2,52 @@
  "schema": "pickupdb.index/1",
  "pickups": [
   {
+   "name": "Roswell HAF (neck)",
+   "brand": "Roswell",
+   "model": "HAF",
+   "position": "neck",
+   "type": "humbucker",
+   "wiring": "series",
+   "cover": false,
+   "count": 1,
+   "used": 1,
+   "ids": [
+    "c6a341cf-aad4-4aa9-a6ff-afd21d1f333d"
+   ],
+   "protocol_captures": 0,
+   "params": {
+    "rdc_ohm": {
+     "mean": 8234.755407981227,
+     "sd": null,
+     "n": 1
+    },
+    "L_H": {
+     "mean": 4.1610548076490295,
+     "sd": null,
+     "n": 1
+    },
+    "re_ohm": {
+     "mean": 304735.5893497533,
+     "sd": null,
+     "n": 1
+    },
+    "cp_F": {
+     "mean": 1.0291595849306082e-10,
+     "sd": null,
+     "n": 1
+    }
+   },
+   "profile": {
+    "rdc_ohm": 8234.755407981227,
+    "L_H": 4.1610548076490295,
+    "re_ohm": 304735.5893497533,
+    "cp_F": 1.0291595849306082e-10
+   },
+   "outliers": 0,
+   "f0_std_load_hz": 3282.3201964144832,
+   "q_std_load": 1.3123276797289425
+  },
+  {
    "name": "Seymour Duncan SH-5 Custom (bridge)",
    "brand": "Seymour Duncan",
    "model": "SH-5 Custom",
