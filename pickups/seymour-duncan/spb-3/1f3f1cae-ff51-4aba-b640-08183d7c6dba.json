@@ -3,27 +3,28 @@
  "id": "1f3f1cae-ff51-4aba-b640-08183d7c6dba",
  "brand": "Seymour Duncan",
  "model": "SPB-3",
- "position": "bridge",
- "type": "humbucker",
+ "position": "middle",
+ "type": "bass_humbucker",
  "params": {
-  "rdc_ohm": 11486.031140311283,
-  "L_H": 6.569577166683349,
-  "re_ohm": 284881.25655396574,
-  "cp_F": 3.56290980130338e-11
+  "rdc_ohm": 11461.210248713285,
+  "L_H": 6.5630739176182145,
+  "re_ohm": 298872.28828867764,
+  "cp_F": 3.9729257287371494e-11
  },
  "quality": {
   "method": "xray",
-  "fit_rms_db": 1.323163304201168,
+  "fit_rms_db": 0.1662704195548996,
   "estimated": []
  },
  "derived": {
-  "f0_unloaded_hz": 10199.193412169392,
-  "q_unloaded": 1.098922761053042,
-  "f0_std_load_hz": 2784.0565421968327,
-  "q_std_load": 1.016315991941001,
+  "f0_unloaded_hz": 9676.772791277452,
+  "q_unloaded": 1.147338039494065,
+  "f0_std_load_hz": 2776.9765791816712,
+  "q_std_load": 1.0330136701718995,
   "std_load": {
-   "r_ohm": 200000,
-   "c_F": 4.7e-10
+   "r_ohm": 200000.0,
+   "c_F": 4.7e-10,
+   "note": "250k of pots || 1M input, 470 pF cable: the same for every pickup"
   }
  },
  "context": {
